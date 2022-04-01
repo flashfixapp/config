@@ -11,7 +11,7 @@ const base = { environment, debug, sandbox };
 
 logger('building config with %O', base);
 
-const getPath = (name) => path.resolve(`${__dirname}/../../${configDir}/${name}`);
+const getPath = (name) => path.resolve(`${process.cwd()}/${configDir}/${name}`);
 const filterExists = (filePath) => fs.existsSync(filePath);
 
 const files = [
