@@ -5,13 +5,13 @@ const logger = require('debug')('@flashfix/config');
 const environment = process.env.NODE_ENV || 'development';
 const debug = environment === 'development';
 const sandbox = process.env.SANDBOX === 'true' || debug;
-const configDir = process.env.CONFIG_DIR || 'config';
+const configDir = process.env.CONFIG_DIR || `${process.cwd()}/config`;
 
 const base = { environment, debug, sandbox };
 
 logger('building config with %O', base);
 
-const getPath = (name) => path.resolve(`${process.cwd()}/${configDir}/${name}`);
+const getPath = (name) => path.resolve(`${configDir}/${name}`);
 const filterExists = (filePath) => fs.existsSync(filePath);
 
 const files = [
